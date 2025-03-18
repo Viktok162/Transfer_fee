@@ -2,14 +2,19 @@ fun main() {
     val cardType1 = "Mastercard"         //  Тип карты Mastercard
     val cardType2: String = "Visa"       //  Тип карты Visa
     val cardType3: String = "Мир"        //  Тип карты Мир
-    val previousTransferMonth = 0        //  Сумма предыдущих переводов в этом месяце
-    val previousTransferDay = 0          //  !!! Сумма предыдущих переводов в этот день, в задании ошибочно не указана
-    val transferAmount: Int = 1000       // Сумма перевода
+    val previousTransferMonth: Int       //  Сумма предыдущих переводов в этом месяце
+    val previousTransferDay = 0          //  Сумма предыдущих переводов в этот день, в задании ошибочно не указана
+    val transferAmount: Int = 1_000      // Сумма перевода
 
-    transferCost(cardType3, previousTransferMonth, previousTransferDay, transferAmount)
+    transferCost(transferAmount, previousTransferDay)
 }
 
-fun transferCost(card: String, prevTransM: Int, prevTransD: Int, amount: Int) {
+fun transferCost(amount: Int, prevTransD: Int, prevTransM: Int = 0, card: String = "Мир") {
+    // amount - сумма перевода
+    // prevTransD - сумма предыдущих переводов в этот день
+    // prevTransM - сумма предыдущих переводов в этом месяце
+    // card - тип карты
+
     val dayLimit = 150_000   // максимальная сумма перевода с одной карты в сутки
     val monthLimit = 600_000 // максимальная сумма перевода с одной карты в месяц
     val limitMaster = 75_000 // лимит перевода с карты Mastercard в месяц
